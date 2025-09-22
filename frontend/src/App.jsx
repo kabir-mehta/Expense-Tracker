@@ -6,6 +6,7 @@ import Expenses from "./components/Expenses";
 import Reports from "./components/Reports";
 import Dashboard from "./components/Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (

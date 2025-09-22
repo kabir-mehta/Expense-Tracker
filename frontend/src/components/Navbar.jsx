@@ -27,31 +27,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <span className="navbar-brand fw-bold">💰 Expense Tracker</span>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/dashboard">Dashboard</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/expenses">Expenses</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/reports">Reports</a>
-            </li>
-            <li className="nav-item">
-              <button
-                className="btn btn-sm btn-danger ms-3"
-                onClick={handleLogout} // use our new function
-              >
-                Logout
-              </button>
-            </li>
-          </ul>
-        </div>
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div className="container-fluid">
+      <span className="navbar-brand fw-bold">💰 Expense Tracker</span>
+      <div className="collapse navbar-collapse">
+        <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+            <a className="nav-link text-white fw-bold" href="/dashboard">Dashboard</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-white fw-bold" href="/expenses">Expenses</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-white fw-bold" href="/reports">Reports</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-white fw-bold bg-danger px-3 rounded" href="/login">Logout</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  );
+    </div>
+  </nav>
+);
 }

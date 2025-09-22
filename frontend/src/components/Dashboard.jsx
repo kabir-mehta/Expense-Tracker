@@ -17,9 +17,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar />
+    <Navbar />
+
       <div className="container mt-5">
-        <h2 className="mb-4">📊 Dashboard</h2>
+        <h2 className="mb-4 fw-bold">📊 Dashboard</h2>
         <div className="row">
           <div className="col-md-3 mb-3">
             <div className="card shadow text-center p-3">
