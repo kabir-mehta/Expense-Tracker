@@ -201,7 +201,11 @@ def dashboard_stats():
             "total_this_month": 0,
             "top_category": None,
             "total_expenses": 0,
-            "avg_daily": 0
+            "avg_daily": 0,
+            "total_this_week": 0,
+            "top_category_week": None,
+            "total_expenses_week": 0,
+            "avg_daily_week": 0
         })
 
     df = pd.DataFrame([{
@@ -210,26 +214,38 @@ def dashboard_stats():
         "category": e.category
     } for e in expenses])
 
-    # Total this month
+    # ---- Monthly stats ----
     current_month = pd.Timestamp.now().to_period("M")
     total_this_month = df[df["date"].dt.to_period("M") == current_month]["amount"].sum()
 
-    # Top category
     category_totals = df.groupby("category")["amount"].sum().sort_values(ascending=False)
     top_category = category_totals.index[0] if not category_totals.empty else None
 
-    # Total expenses
     total_expenses = len(df)
-
-    # Average daily spend
     avg_daily = df.groupby(df["date"].dt.date)["amount"].sum().mean()
+
+    # ---- Weekly stats ----
+    today = pd.Timestamp.now()
+    start_of_week = today - pd.Timedelta(days=today.weekday())  # Monday
+    df_week = df[df["date"].dt.date >= start_of_week.date()]
+
+    total_this_week = df_week["amount"].sum()
+    category_totals_week = df_week.groupby("category")["amount"].sum().sort_values(ascending=False)
+    top_category_week = category_totals_week.index[0] if not category_totals_week.empty else None
+    total_expenses_week = len(df_week)
+    avg_daily_week = df_week.groupby(df_week["date"].dt.date)["amount"].sum().mean()
 
     return jsonify({
         "total_this_month": float(total_this_month),
         "top_category": top_category,
         "total_expenses": int(total_expenses),
-        "avg_daily": round(float(avg_daily), 2) if not pd.isna(avg_daily) else 0
+        "avg_daily": round(float(avg_daily), 2) if not pd.isna(avg_daily) else 0,
+        "total_this_week": float(total_this_week),
+        "top_category_week": top_category_week,
+        "total_expenses_week": int(total_expenses_week),
+        "avg_daily_week": round(float(avg_daily_week), 2) if not pd.isna(avg_daily_week) else 0
     })
+
 
 
 if __name__ == "__main__":

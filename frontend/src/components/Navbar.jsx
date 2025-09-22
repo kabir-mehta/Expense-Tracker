@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
-      <span className="navbar-brand fw-bold">💰 Expense Tracker</span>
+      <span className="navbar-brand fw-bold">💰 My Expense Tracker</span>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
