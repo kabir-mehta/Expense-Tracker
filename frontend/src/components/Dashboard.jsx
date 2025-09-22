@@ -17,7 +17,9 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar />
+      <nav className="sticky-top">
+        <Navbar />
+      </nav>
 
       <div className="container mt-5">
       <h2 className="mb-4 fw-bold">📊 Dashboard</h2>

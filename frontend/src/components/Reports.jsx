@@ -35,7 +35,9 @@ export default function Reports() {
 
   return (
     <>
-    <Navbar />
+    <nav className="sticky-top">
+      <Navbar />
+    </nav>
 
       <div className="container mt-4">
 
