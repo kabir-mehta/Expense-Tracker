@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -33,16 +33,16 @@ export default function Navbar() {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <a className="nav-link text-white fw-bold" href="/dashboard">Dashboard</a>
+            <NavLink className="nav-link text-white fw-bold" to="/dashboard">Dashboard</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white fw-bold" href="/expenses">Expenses</a>
+            <NavLink className="nav-link text-white fw-bold" to="/expenses">Expenses</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white fw-bold" href="/reports">Reports</a>
+            <NavLink className="nav-link text-white fw-bold" to="/reports">Reports</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white fw-bold bg-danger px-3 rounded" href="/login">Logout</a>
+            <NavLink className="nav-link text-white fw-bold bg-danger px-3 rounded" to="/login">Logout</NavLink>
           </li>
         </ul>
       </div>

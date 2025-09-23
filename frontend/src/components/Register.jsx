@@ -56,7 +56,7 @@ const Register = () => {
           </form>
           <p className="mt-3 text-center">
             Already have an account?{" "}
-            <a href="/login">Login here</a>
+            <NavLink to="/login">Login here</NavLink>
           </p>
         </div>
       </div>

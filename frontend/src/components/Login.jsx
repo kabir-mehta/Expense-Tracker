@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -55,7 +56,7 @@ const Login = () => {
           </form>
           <p className="mt-3 text-center">
             Don’t have an account?{" "}
-            <a href="/register">Register here</a>
+            <NavLink to="/register">Register here</NavLink>
           </p>
         </div>
       </div>

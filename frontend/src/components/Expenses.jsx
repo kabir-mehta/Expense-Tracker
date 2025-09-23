@@ -17,8 +17,8 @@ export default function Expenses() {
   // Search & Filter states
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [fromDate, setFromDate] = useState(""); 
-  const [toDate, setToDate] = useState("");     
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   // Sorting state
   const [sortBy, setSortBy] = useState(""); // "", "amount", "date", "category"
@@ -63,6 +63,29 @@ export default function Expenses() {
     setExpenseToDelete(null);
     fetchExpenses();
   };
+
+  const handleExport = async () => {
+  try {
+    const res = await axios.get("http://localhost:5000/api/expenses/export", {
+      responseType: "blob", // important for files
+      withCredentials: true
+    });
+
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement("a");
+    link.href = url;
+
+    // 👇 force the file name here
+    link.setAttribute("download", "expenses.csv");
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  } catch (err) {
+    console.error("Export failed", err);
+  }
+};
+
 
   // Filtered expenses with search, category, and date range
   const filteredExpenses = expenses.filter(e => {
@@ -262,9 +285,17 @@ export default function Expenses() {
           </div>
         )}
 
-        <button className="btn btn-outline-success mt-3" onClick={() => window.location.href="/api/expenses/export"}>
+        {/* <button className="btn btn-outline-success mt-3" onClick={() => window.location.href = "/api/expenses/export"}>
+          ⬇️ Export to Excel
+        </button> */}
+
+        <button 
+          className="btn btn-outline-success mt-3" 
+          onClick={handleExport}
+        >
           ⬇️ Export to Excel
         </button>
+
       </div>
     </>
   );
